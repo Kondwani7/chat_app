@@ -22,11 +22,12 @@ class RecentChats extends StatelessWidget {
             return Row(
               //styling and code for a single message
               children: <Widget>[
+                //sender image
                 CircleAvatar(
                   radius: 35.0,
                   backgroundImage: AssetImage(chat.sender.imageUrl),
                 ),
-                SizedBox(width: 10.0),
+                const SizedBox(width: 10.0),
                 Column(
                   //aligning to start, how individual messages appear on whatsapp
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,6 +39,7 @@ class RecentChats extends StatelessWidget {
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold),
                     ),
+                    Text(chat.text),
                   ],
                 )
               ],
