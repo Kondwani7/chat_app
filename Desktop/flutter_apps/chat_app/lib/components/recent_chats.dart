@@ -6,19 +6,44 @@ class RecentChats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30.0),
-          topRight: Radius.circular(30.0),
+    return Expanded(
+      child: Container(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30.0),
+            topRight: Radius.circular(30.0),
+          ),
         ),
-      ),
-      child: ListView.builder(
-        itemCount: chats.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Text(chats[index].sender.name);
-        },
+        child: ListView.builder(
+          itemCount: chats.length,
+          itemBuilder: (BuildContext context, int index) {
+            final Message chat = chats[index];
+            return Row(
+              //styling and code for a single message
+              children: <Widget>[
+                CircleAvatar(
+                  radius: 35.0,
+                  backgroundImage: AssetImage(chat.sender.imageUrl),
+                ),
+                SizedBox(width: 10.0),
+                Column(
+                  //aligning to start, how individual messages appear on whatsapp
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      chats[index].sender.name,
+                      style: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                )
+              ],
+            );
+          },
+        ),
       ),
     );
   }
