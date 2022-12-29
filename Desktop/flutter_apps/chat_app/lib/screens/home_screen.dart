@@ -12,29 +12,43 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
+      backgroundColor: Theme.of(context).primaryColor,
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.menu),
+          iconSize: 30.0,
+          color: Colors.white,
+        ),
+        title: const Text(
+          'Chats',
+          style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+        ),
+        actions: <Widget>[
+          IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.menu),
+            icon: const Icon(Icons.search_outlined),
             iconSize: 30.0,
             color: Colors.white,
           ),
-          title: const Text(
-            'Chats',
-            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-          ),
-          actions: <Widget>[
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.search_outlined),
-              iconSize: 30.0,
-              color: Colors.white,
+        ],
+      ),
+      //building the body
+      body: Column(
+        children: <Widget>[
+          const CategorySelector(),
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Theme.of(context).accentColor,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30.0),
+                    topRight: Radius.circular(30.0),
+                  )),
             ),
-          ],
-        ),
-        //building the body
-        body: Column(
-          children: const <Widget>[CategorySelector()],
-        ));
+          )
+        ],
+      ),
+    );
   }
 }
