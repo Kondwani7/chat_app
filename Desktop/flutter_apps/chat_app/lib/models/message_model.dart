@@ -19,10 +19,11 @@ class Message {
 
 // YOU - current user
 final User currentUser =
-    User(id: 0, name: 'Current User', imageUrl: 'images/greg.jpg');
+    User(id: 0, name: 'Current User', imageUrl: 'images/kondwani.png');
 
 // USERS
-final User greg = User(id: 1, name: 'Greg', imageUrl: 'images/greg.jpg');
+final User kondwani =
+    User(id: 1, name: 'Kondwani', imageUrl: 'images/kondwani.png');
 final User james = User(id: 2, name: 'James', imageUrl: 'images/james.jpg');
 final User john = User(id: 3, name: 'John', imageUrl: 'images/john.jpg');
 final User olivia = User(id: 4, name: 'Olivia', imageUrl: 'images/olivia.jpg');
@@ -31,7 +32,7 @@ final User sophia = User(id: 6, name: 'Sophia', imageUrl: 'images/sophia.jpg');
 final User steven = User(id: 7, name: 'Steven', imageUrl: 'images/steven.jpg');
 
 // FAVORITE CONTACTS
-List<User> favorites = [sam, steven, olivia, john, greg];
+List<User> favorites = [sam, steven, olivia, john, kondwani];
 
 // EXAMPLE CHATS ON HOME SCREEN
 List<Message> chats = [
@@ -78,7 +79,7 @@ List<Message> chats = [
     unread: false,
   ),
   Message(
-    sender: greg,
+    sender: kondwani,
     time: '11:30 AM',
     text: 'Hey, how\'s it going? What did you do today?',
     isLiked: false,
