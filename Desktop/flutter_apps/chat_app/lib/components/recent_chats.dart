@@ -20,28 +20,52 @@ class RecentChats extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             final Message chat = chats[index];
             return Row(
-              //styling and code for a single message
+              //adds spacing between sender image and sender name & text
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                //sender image
-                CircleAvatar(
-                  radius: 35.0,
-                  backgroundImage: AssetImage(chat.sender.imageUrl),
-                ),
-                const SizedBox(width: 10.0),
-                Column(
-                  //aligning to start, how individual messages appear on whatsapp
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
+                  //styling and code for a single message
                   children: <Widget>[
-                    Text(
-                      chats[index].sender.name,
-                      style: const TextStyle(
-                          color: Colors.grey,
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold),
+                    //sender image
+                    CircleAvatar(
+                      radius: 35.0,
+                      backgroundImage: AssetImage(chat.sender.imageUrl),
                     ),
-                    Text(chat.text),
+                    const SizedBox(width: 10.0),
+                    Column(
+                      //aligning to start, how individual messages appear on whatsapp
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          chats[index].sender.name,
+                          style: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 5.0),
+                        Container(
+                          //media query allows you to handle & adapt to dynamic data
+                          //adjusts texts to 0.45 of width of sender row screen
+                          width: MediaQuery.of(context).size.width * 0.45,
+                          child: Text(
+                            chat.text,
+                            style: const TextStyle(
+                              color: Colors.blueGrey,
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            //hide long messages
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    )
                   ],
-                )
+                ),
+                Column(
+                  children: <Widget>[Text(chat.time)],
+                ),
               ],
             );
           },
