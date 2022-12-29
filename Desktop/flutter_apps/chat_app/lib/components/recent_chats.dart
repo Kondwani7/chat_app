@@ -64,7 +64,38 @@ class RecentChats extends StatelessWidget {
                   ],
                 ),
                 Column(
-                  children: <Widget>[Text(chat.time)],
+                  children: <Widget>[
+                    Text(
+                      chat.time,
+                      style: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 5.0,
+                    ),
+                    //handle unread messages
+                    //if unread, show new message alert, else nothing
+                    chat.unread
+                        ? Container(
+                            width: 40.0,
+                            height: 20.0,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor,
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            alignment: Alignment.center,
+                            child: const Text(
+                              'NEW',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        : const Text(''),
+                  ],
                 ),
               ],
             );
